@@ -1,0 +1,26 @@
+<p>
+<a href="/users/<%= current_user.id %>">Wedding Registry</a> > <a href="/items">Items</a>
+</p>
+
+<h1><%= @item.name %></h1>
+
+<p>
+Category: <a href="/categories/<%= @item.category.id if @item.category%>">
+<% if @item.category %>
+    <%= @item.category.name %>
+<% else %>
+    <%="None"%>
+<% end %>
+</a><br />
+</p>
+
+<p>
+<form action="/items/<%= @item.id %>/edit" method="get">
+<button type="submit" id="edit">Edit Item</button>
+</form>
+
+<form action="/items/<%= @item.id %>" method="post">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<button type="submit" id="delete">Delete Item</button>
+</form>
+</p>

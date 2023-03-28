@@ -1,0 +1,25 @@
+<h1>Wedding Registry</h1>
+<p>Hello, <%= @user.username %>!</p>
+
+<h3>
+<a href="/items/new"> + Add Item </a>
+</h3>
+
+<p>
+<ul>
+<% @user.categories.uniq.each do |cat| %>
+    <h3><li><a href="/categories/<%= cat.id %>"><%= cat.name %></a></li></h3>
+    <% cat.items.each do |item| %>
+        <li><a href="/items/<%= item.id %>"><%= item.name if item.user_id == @user.id %></a></li>
+    <% end %><br />
+<% end %>
+<% @user.items.each do |item| %>
+    <li><a href="/items/<%= item.id %>"><%= item.name if !item.category %></a></li>
+<% end %>
+</ul>
+</p>
+
+<br />
+<p>
+<a href="/users/logout">Log Out</a>
+</p>

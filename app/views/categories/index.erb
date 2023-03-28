@@ -1,0 +1,10 @@
+<p><a href="/users/<%= current_user.id %>">Wedding Registry</a></p>
+<h1>Categories</h1>
+
+<p>
+<ul>
+<% current_user.categories.uniq.each do |cat| %>
+    <li><a href="/categories/<%= cat.id %>"><%= cat.name %></a></li>
+<% end %>
+</ul>
+</p>

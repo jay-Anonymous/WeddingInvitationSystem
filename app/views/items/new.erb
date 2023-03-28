@@ -1,0 +1,19 @@
+<h1>Add a New Item</h1>
+
+<form action="/items" method="POST">
+
+<h3><label for="name">Item</label></h3>
+<input type="text" id="name" name="name" /><br />
+
+<h3><label>Category</label></h3>
+<ul>
+<% current_user.categories.uniq.each do |cat| %>
+    <li><input type="radio" id="<%= cat.id %>" name="category_id" value="<%= cat.id %>"><%= cat.name  %></input></li>
+<% end %>
+<label>Make a new category <input type="text" id="category_name" name="category_name" /></label>
+</ul>
+<br />
+
+<button type="submit" id="submit">Add Item</button>
+
+</form>

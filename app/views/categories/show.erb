@@ -1,0 +1,22 @@
+<p>
+<a href="/users/<%= current_user.id %>">Wedding Registry</a> > <a href="/categories">Categories</a>
+</p>
+
+<h1><%= @category.name %></h1>
+
+<ul>
+<% @category.items.each do |item| %>
+    <a href="/items/<%= item.id %>"><li><%= item.name if item.user_id == current_user.id %></li></a>
+<% end %>
+</ul>
+
+<p>
+<form action="/categories/<%= @category.id %>/edit" method="get">
+<button type="submit" id="edit">Edit Category</button>
+</form>
+
+<form action="/categories/<%= @category.id %>" method="post">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<button type="submit" id="delete">Delete Category</button>
+</form>
+</p>
